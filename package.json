@@ -20,8 +20,10 @@
     "@eslint/js": "^8.46.0",
     "@eslint/json": "^2.0.0",
     "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.8",
     "git-commit-msg-linter": "^5.0.8",
     "globals": "^17.6.0",
-    "lint-staged": "^16.4.0"
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.3"
   }
 }
