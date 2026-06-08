@@ -8,12 +8,11 @@ export default [
     files: ["**/*.{js,mjs,cjs}"],
     languageOptions: {
       globals: {
+        ...globals.node,
         ...globals.browser,
       },
     },
-    rules: {
-      "no-unused-vars": "error",
-    },
+    rules: {},
   },
   eslintConfigPrettier,
 ];
