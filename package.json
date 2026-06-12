@@ -8,7 +8,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "postinstall": "husky install",
-    "migrations:run": "node src/db/postgres/migrations/exec.js"
+    "migrations:run": "node src/db/postgres/migrations/exec.js",
+    "start:dev": "node --watch index.js"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +21,8 @@
     "express": "^5.2.1",
     "husky": "^8.0.3",
     "pg": "^8.21.0",
-    "uuid": "^14.0.0"
+    "uuid": "^14.0.0",
+    "validator": "^13.15.35"
   },
   "devDependencies": {
     "@eslint/js": "^8.46.0",
