@@ -1,9 +1,17 @@
 import bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
 import { PostgresCreateUserRepository } from '../repository/postgres/createUser.js';
+import { GetUserByEmail } from '../repository/postgres/getUserByEmail.js';
 
 export class CreateUserUseCase {
   async execute(createUserParams) {
+    const getUserByEmailRepository = new GetUserByEmail();
+    const userWithProvidedEmail = getUserByEmailRepository.execute(createUserParams.email);
+
+    if (userWithProvidedEmail) {
+      throw new Error('The provided e-mail is already in use');
+    }
+
     const userId = uuidv4();
     const hashedPassword = await bcrypt.hash(createUserParams.password, 10);
 
