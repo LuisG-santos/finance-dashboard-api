@@ -9,7 +9,7 @@ export class UpdateUseruseCase {
 
       const userWithProvidedEmail = await getUserByEmail.execute(upadateUserParams.email);
 
-      if (userWithProvidedEmail) {
+      if (userWithProvidedEmail && userWithProvidedEmail.id !== userId) {
         throw new EmailAlreadyInUseError(upadateUserParams.email);
       }
     }
