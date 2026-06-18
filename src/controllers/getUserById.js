@@ -1,4 +1,4 @@
-import { GetUserByIdUseCase } from '../use-cases/getUserById.js';
+import { GetUserByIdUseCase } from '../use-cases/index.js';
 import { checkIfIdIsValid, InvalidIdResponse, notFound, ok, serverError } from './helpers/index.js';
 
 export class GetUserByIdController {
