@@ -1,6 +1,6 @@
 import { PostgresHelper } from '../../db/postgres/helper';
 
-export class DeleteUser {
+export class DeleteUserRepository {
   async execute(userId) {
     const deleteUser = PostgresHelper.query(
       `
