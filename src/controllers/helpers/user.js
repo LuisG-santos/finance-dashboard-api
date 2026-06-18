@@ -9,4 +9,7 @@ export const EmailAlreadyInUseResponse = () =>
 export const InvalidIdResponse = () => badRequest({ message: 'The provided id is not valid' });
 
 export const checkIsPasswordIsValid = (password) => password.length >= 6;
+
 export const checkIfEmailIsValid = (email) => validator.isEmail(email);
+
+export const checkIfIdIsValid = (id) => validator.isUUID(id);
