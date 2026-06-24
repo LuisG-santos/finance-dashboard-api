@@ -16,10 +16,11 @@ export class UpdateUserController {
   }
   async excute(httpRequest) {
     try {
-      const userId = httpRequest.params.userdId;
+      const userId = httpRequest.params.userId;
       if (!checkIfIdIsValid(userId)) {
         return InvalidIdResponse();
       }
+
       const params = httpRequest.body;
 
       const allowedFields = ['first_name', 'last_name', 'email', 'password'];
@@ -50,6 +51,7 @@ export class UpdateUserController {
       if (error instanceof EmailAlreadyInUseError) {
         return badRequest({ message: error.message });
       }
+
       console.log(error);
       return serverError();
     }
