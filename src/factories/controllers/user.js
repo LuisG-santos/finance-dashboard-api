@@ -12,10 +12,10 @@ import {
   DeleteUserRepository,
   CreateUserRepository,
 } from '../../repository/postgres/index.js';
-import { CreateUserUseCase } from '../../use-cases/createUser.js';
-import { DeleteUserUseCase } from '../../use-cases/deleteUser.js';
-import { GetUserByIdUseCase } from '../../use-cases/getUserById.js';
-import { UpdateUserUseCase } from '../../use-cases/updateUser.js';
+import { CreateUserUseCase } from '../../use-cases/user/createUser.js';
+import { DeleteUserUseCase } from '../../use-cases/user/deleteUser.js';
+import { GetUserByIdUseCase } from '../../use-cases/user/getUserById.js';
+import { UpdateUserUseCase } from '../../use-cases/user/updateUser.js';
 
 export const makeGetUserByIdController = () => {
   const getUserByIdRepsitory = new GetUserByIdRepsitory();
