@@ -1,7 +1,7 @@
-import { CreateTransactionRepository } from '../../repository/postgres/transaction/createTransaction';
-import { CreateTransactionUseCase } from '../../use-cases/transaction/createTransaction';
-import { GetUserByIdRepsitory } from '../../repository/postgres/user/getUserById';
-import { CreateTrasacitonController } from '../../controllers/transaction/createTransaction';
+import { CreateTransactionRepository } from '../../repository/postgres/transaction/createTransaction.js';
+import { CreateTransactionUseCase } from '../../use-cases/transaction/createTransaction.js';
+import { GetUserByIdRepsitory } from '../../repository/postgres/user/getUserById.js';
+import { CreateTrasacitonController } from '../../controllers/transaction/createTransaction.js';
 
 export const makeCreateTransactionController = () => {
   const createTransactionRepository = new CreateTransactionRepository();
