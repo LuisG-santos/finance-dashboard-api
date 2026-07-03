@@ -1,4 +1,10 @@
-import { badRequest, checkIfIdIsValid, created, InvalidIdResponse, serverError } from '../helpers';
+import {
+  badRequest,
+  checkIfIdIsValid,
+  created,
+  InvalidIdResponse,
+  serverError,
+} from '../helpers/index.js';
 import validator from 'validator';
 export class CreateTrasacitonController {
   constructor(createTransactionUseCase) {
@@ -8,10 +14,10 @@ export class CreateTrasacitonController {
     try {
       const params = httpRequest.body;
 
-      const requiredFields = ['id', 'user_id', 'name', 'date', 'amount', 'type'];
+      const requiredFields = ['user_id', 'name', 'date', 'amount', 'type'];
       for (const field of requiredFields) {
-        if (!params[field] || params[field].trim().length === 0) {
-          return badRequest({ message: `Missinf param: ${field}` });
+        if (!params[field] || params[field].toString().trim().length === 0) {
+          return badRequest({ message: `Missing param: ${field}` });
         }
       }
 
@@ -41,7 +47,7 @@ export class CreateTrasacitonController {
         return badRequest({ message: 'The type must be EARNING, EXPENSE or INVESTMENT' });
       }
 
-      const transaction = await this.createTransactionUseCase({ ...params, type });
+      const transaction = await this.createTransactionUseCase.execute({ ...params, type });
 
       return created(transaction);
     } catch (error) {
