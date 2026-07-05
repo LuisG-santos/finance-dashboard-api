@@ -3,6 +3,7 @@ import {
   checkIfIdIsValid,
   created,
   InvalidIdResponse,
+  requiredFieldIsMissingResponse,
   serverError,
   validateRequiredFields,
 } from '../helpers/index.js';
@@ -23,17 +24,11 @@ export class CreateTrasacitonController {
       );
 
       if (!requiredFieldWereProvided) {
-        return badRequest({
-          message: `The field ${missingField} is required`,
-        });
+        return requiredFieldIsMissingResponse(missingField);
       }
 
       if (!checkIfIdIsValid(params.user_id)) {
         return InvalidIdResponse();
-      }
-
-      if (params.amount <= 0) {
-        return badRequest({ message: 'The amount must be greater than 0' });
       }
 
       const amountIsValid = validator.isCurrency(params.amount.toString(), {
