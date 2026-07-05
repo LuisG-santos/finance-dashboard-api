@@ -4,6 +4,7 @@ import {
   created,
   InvalidIdResponse,
   serverError,
+  validateRequiredFields,
 } from '../helpers/index.js';
 import validator from 'validator';
 export class CreateTrasacitonController {
@@ -15,10 +16,16 @@ export class CreateTrasacitonController {
       const params = httpRequest.body;
 
       const requiredFields = ['user_id', 'name', 'date', 'amount', 'type'];
-      for (const field of requiredFields) {
-        if (!params[field] || params[field].toString().trim().length === 0) {
-          return badRequest({ message: `Missing param: ${field}` });
-        }
+
+      const { ok: requiredFieldWereProvided, missingField } = validateRequiredFields(
+        params,
+        requiredFields
+      );
+
+      if (!requiredFieldWereProvided) {
+        return badRequest({
+          message: `The field ${missingField} is required`,
+        });
       }
 
       if (!checkIfIdIsValid(params.user_id)) {
