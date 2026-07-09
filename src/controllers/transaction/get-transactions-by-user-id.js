@@ -6,7 +6,7 @@ import {
   checkIfIdIsValid,
   InvalidIdResponse,
   ok,
-} from '../helpers';
+} from '../helpers/index.js';
 
 export class GetTransactionsByUserIdController {
   constructor(getTransactionByUserIdUseCase) {
