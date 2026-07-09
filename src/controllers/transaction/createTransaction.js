@@ -5,6 +5,7 @@ import {
   requiredFieldIsMissingResponse,
   serverError,
   validateRequiredFields,
+  InvalidAmountResponse,
 } from '../helpers/index.js';
 import {
   checkIfAmountIsValid,
@@ -37,7 +38,7 @@ export class CreateTrasacitonController {
       const amountIsValid = checkIfAmountIsValid(params.amount);
 
       if (!amountIsValid) {
-        return checkIfAmountIsValid();
+        return InvalidAmountResponse();
       }
 
       const type = params.type.trim().toUpperCase();
